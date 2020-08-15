@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Cell from './Cell';
 import styled from 'styled-components';
 
@@ -14,15 +14,28 @@ const StyledDiv = styled.div`
     display: flex;
 `;
 
-const Grid = ({ grid }) => {
+const Grid = ({ grid, setGrid, playing }) => {
+    const elem = useRef(null);
+    const [clicking, setClick] = useState(false);
+
+
     return (
-        <StyledMain>
+        <StyledMain ref={elem} onMouseDown={(e) => { e.preventDefault(); setClick(true); }} onMouseUp={() => setClick(false)}>
             {
                 grid.map((row, rowIndex) =>
                     <StyledDiv key={rowIndex}>
                         {
                             row.map((value, cellIndex) =>
-                                <Cell alive={value} gridSize={row.length} key={`${rowIndex}-${cellIndex}`} />
+                                <Cell
+                                    grid={grid}
+                                    playing={playing}
+                                    alive={value}
+                                    key={`${rowIndex}-${cellIndex}`}
+                                    clicking={clicking}
+                                    row={rowIndex}
+                                    column={cellIndex}
+                                    setGrid={setGrid}
+                                />
                             )
                         }
                     </StyledDiv>)

@@ -11,7 +11,7 @@ const Title = styled.h1`
 `;
 
 const gridSize = 50;
-const speed = 1000;
+const speed = 10;
 
 const App = () => {
     const [grid, setGrid] = useState(gridConstructor(gridSize));
@@ -44,6 +44,13 @@ const App = () => {
                     newGrid[12][13] = 1;
                     newGrid[13][15] = 1;
                     newGrid[12][12] = 1;
+
+
+                    newGrid[1][gridSize - 3] = 1;
+                    newGrid[2][gridSize - 2] = 1;
+                    newGrid[3][gridSize - 1] = 1;
+                    newGrid[3][gridSize - 2] = 1;
+                    newGrid[4][gridSize - 3] = 1;
 
                     return newGrid;
                 }

@@ -31,9 +31,7 @@ const speed = 1000;
 
 const App = () => {
     const [grid, setGrid] = useState(gridConstructor(gridSize));
-    const [gridGeneration, setGridGeneration] = useState(0);
     const [playing, setPlay] = useState(false);
-
 
     useEffect(
         () => {
@@ -62,16 +60,13 @@ const App = () => {
         , [grid, playing]
     );
 
-    useEffect(() => {
-        if (playing) {
-            setGridGeneration(n => n + 1);
-        }
-    }, [grid, playing]);
-
     return (
         <>
             <Title>
-                🌵 deBakatas Followers
+                <span role="img" aria-label="cactus">
+                    🌵
+                </span>
+                 deBakatas Followers
             </Title>
             <Grid grid={grid} setGrid={setGrid} playing={playing} />
             <StyledButton onClick={() => setPlay(true)}>Play</StyledButton>

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { deepClone } from '../utils';
 
 const StyledSpan = styled.span`
     --size: ${({ gridSize }) => 80 / gridSize}vmin;
